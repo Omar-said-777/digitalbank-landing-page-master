@@ -7,20 +7,10 @@
   <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style.css">
 
   <title>Frontend Mentor | Digitalbank landing page</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 0.6875rem;
-      text-align: center;
-    }
-
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
 </head>
 
 <body>
@@ -28,11 +18,16 @@
   <header>
     <div class="container">
 
-      <div class="logo">
-        <img src="images/logo-dark.svg" alt="logo">
-      </div>
+      <a class="logo" href="#Home" aria-label="Digitalbank home">
+        <img src="images/logo-dark.svg" alt="Digitalbank">
+      </a>
 
-      <nav class="head">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"
+        aria-label="Open navigation">
+        <img src="images/icon-hamburger.svg" alt="">
+      </button>
+
+      <nav class="head" id="main-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#Home" class="main-nav">Home</a></li>
           <li><a href="#About" class="main-nav">About</a></li>
@@ -42,7 +37,7 @@
         </ul>
       </nav>
 
-      <button>
+      <button class="header-cta" type="button">
         Request Invite
       </button>
     </div>
@@ -57,11 +52,14 @@
           <h1>Next generation digital banking</h1>
           <p>Take your financial life online. Your Digitalbank account will be a one-stop-shop
             for spending, saving, budgeting, investing, and much more.</p>
-          <button>Request Invite</button>
+          <button class="hero-cta" type="button">Request Invite</button>
         </div>
 
-        <div class="mid-main-img">
-          <img src="images/bg-intro-desktop.svg" alt="hero-background">
+        <div class="mid-main-img" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 767px)" srcset="images/bg-intro-mobile.svg">
+            <img class="hero-bg" src="images/bg-intro-desktop.svg" alt="">
+          </picture>
           <img src="images/image-mockups.png" alt="Digitalbank mobile app mockups">
         </div>
       </div>
@@ -181,6 +179,18 @@
 
   <footer id="Contact">
     <div class="container">
+      <div class="footer-brand">
+        <a class="logo" href="#Home" aria-label="Digitalbank home">
+          <img src="images/logo-light.svg" alt="Digitalbank">
+        </a>
+        <div class="social-links" aria-label="Social media links">
+          <a href="#" aria-label="Facebook"><img src="images/icon-facebook.svg" alt=""></a>
+          <a href="#" aria-label="YouTube"><img src="images/icon-youtube.svg" alt=""></a>
+          <a href="#" aria-label="Twitter"><img src="images/icon-twitter.svg" alt=""></a>
+          <a href="#" aria-label="Pinterest"><img src="images/icon-pinterest.svg" alt=""></a>
+          <a href="#" aria-label="Instagram"><img src="images/icon-instagram.svg" alt=""></a>
+        </div>
+      </div>
       <div class="last-nav">
         <ul>
           <li>About Us</li>
@@ -192,7 +202,7 @@
         </ul>
       </div>
       <div>
-        <button>
+        <button class="footer-cta" type="button">
           Request Invite
         </button>
       </div>
@@ -207,6 +217,8 @@
       Coded by <a href="#">omar_said</a>.
     </div>
   </footer>
+
+  <script src="./script.js"></script>
 
 </body>
 
