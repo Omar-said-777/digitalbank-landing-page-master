@@ -100,7 +100,7 @@ header .container {
 
 .head a:hover,
 .head a:focus-visible {
-    color: var(--navy);
+    color: var(--green);
 }
 
 .head a:hover::after,
@@ -369,6 +369,10 @@ footer .container>p {
 }
 
 @media (max-width: 767px) {
+    body:has(header.nav-open) {
+        overflow: hidden;
+    }
+
     .container {
         width: min(100% - 48px, 500px);
     }
@@ -377,9 +381,40 @@ footer .container>p {
         height: 64px;
     }
 
-    .head,
     .header-cta {
         display: none;
+    }
+
+    .head {
+        position: absolute;
+        top: 88px;
+        right: 24px;
+        left: 24px;
+        z-index: 1;
+        padding: 30px 0;
+        background: var(--white);
+        box-shadow: 0 12px 28px rgba(35, 38, 72, .12);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+    }
+
+    main::before {
+        position: fixed;
+        z-index: 4;
+        inset: 64px 0 0;
+        content: '';
+        background: rgba(20, 24, 40, .32);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease;
+    }
+
+    header.nav-open~main::before {
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .menu-toggle {
@@ -399,14 +434,11 @@ footer .container>p {
     }
 
     header.nav-open .head {
-        position: absolute;
-        top: 88px;
-        right: 24px;
-        left: 24px;
-        display: block;
-        padding: 30px 0;
-        background: var(--white);
-        box-shadow: 0 12px 28px rgba(35, 38, 72, .12);
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition: opacity .2s ease, transform .2s ease;
     }
 
     .head ul {
@@ -422,6 +454,14 @@ footer .container>p {
 
     .head a::after {
         display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .head,
+        main::before {
+            transition: none;
+        }
     }
 
     .hero-section,
